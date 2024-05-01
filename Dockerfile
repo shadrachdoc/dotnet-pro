@@ -12,6 +12,12 @@ COPY install-newrelic.sh /tmp/
 # Make the script executable and run it
 RUN chmod +x /tmp/install-newrelic.sh && /tmp/install-newrelic.sh
 
+RUN mkdir -p /usr/local/newrelic-dotnet-agent && \
+    tar -xzf ${NEWRELIC_ARCHIVE} -C /usr/local/newrelic-dotnet-agent --strip-components=1
+
+# List the contents of the directory
+RUN ls -al /usr/local/newrelic-dotnet-agent
+
 RUN /usr/local/newrelic-dotnet-agent/newrelic-netcore-agent \
     --foreground \
     --logfile /app/logs/newrelic.log \
