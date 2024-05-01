@@ -9,7 +9,7 @@ wget -O ${NEWRELIC_ARCHIVE} ${NEWRELIC_DOWNLOAD_URL}
 # Extract the agent files
 mkdir -p /usr/local/newrelic-dotnet-agent
 tar -xzf ${NEWRELIC_ARCHIVE} -C /usr/local/newrelic-dotnet-agent --strip-components=1
-
+ls -al /usr/local/newrelic-dotnet-agent
 # Clean up
 rm ${NEWRELIC_ARCHIVE}
 
