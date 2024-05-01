@@ -1,9 +1,8 @@
 #!/bin/sh
 
 # Download the NewRelic .NET agent
-NEWRELIC_VERSION=9.8.0
-NEWRELIC_DOWNLOAD_URL=https://download.newrelic.com/dot_net_agent/ext_dotNETAgentLinuxX64_${NEWRELIC_VERSION}.tar.gz
-NEWRELIC_ARCHIVE=ext_dotNETAgentLinuxX64_${NEWRELIC_VERSION}.tar.gz
+NEWRELIC_DOWNLOAD_URL=https://download.newrelic.com/dot_net_agent/latest_release/newrelic-dotnet-agent_10.23.1_amd64.tar.gz
+NEWRELIC_ARCHIVE=newrelic-dotnet-agent_10.23.1_amd64.tar.gz
 
 wget -O ${NEWRELIC_ARCHIVE} ${NEWRELIC_DOWNLOAD_URL}
 
