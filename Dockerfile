@@ -23,7 +23,7 @@ NEW_RELIC_APP_NAME="HelloWorldApp"
 # Use the ASP.NET Core SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 WORKDIR /src
-COPY ["HelloWorldApp/HelloWorldApp.csproj", "./"]
+COPY ["HelloWorldApp.csproj", "./"]
 RUN dotnet restore "HelloWorldApp.csproj"
 COPY . .
 WORKDIR "/src/."
