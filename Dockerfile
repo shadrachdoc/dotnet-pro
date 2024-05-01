@@ -12,6 +12,11 @@ COPY install-newrelic.sh /tmp/
 # Make the script executable and run it
 RUN chmod +x /tmp/install-newrelic.sh && /tmp/install-newrelic.sh
 
+RUN /usr/local/newrelic-dotnet-agent/newrelic-netcore-agent \
+    --foreground \
+    --logfile /app/logs/newrelic.log \
+    --loglevels info
+
 # Use the ASP.NET Core SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 WORKDIR /src
