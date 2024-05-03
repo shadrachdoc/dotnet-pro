@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Install the agent
 RUN apk add --no-cache ca-certificates wget
+RUN apk add --no-cache bash
 
 # Copy the installation script
 COPY install-newrelic.sh /tmp/
