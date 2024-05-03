@@ -42,7 +42,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Give full access to the run.sh script
-RUN chmod 755 /usr/local/newrelic-dotnet-agent/run.sh
+#RUN chmod 755 /usr/local/newrelic-dotnet-agent/run.sh
 
 # Run the application and the New Relic agent
-ENTRYPOINT ["dotnet", "HelloWorldApp.dll"]
+ENTRYPOINT ["/usr/local/newrelic-dotnet-agent/run.sh", "dotnet", "HelloWorldApp.dll"]
