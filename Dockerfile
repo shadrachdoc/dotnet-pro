@@ -7,6 +7,13 @@ WORKDIR /app
 RUN apk add --no-cache ca-certificates wget
 RUN apk add --no-cache bash
 
+ENV CORECLR_ENABLE_PROFILING=1 \
+    CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A} \
+    CORECLR_NEWRELIC_HOME=/usr/local/newrelic-dotnet-agent \
+    CORECLR_PROFILER_PATH=/usr/local/newrelic-dotnet-agent/libNewRelicProfiler.so \
+    NEW_RELIC_LICENSE_KEY=eu01xx897bb460a31b2397bb69e47267FFFFNRAL \
+    NEW_RELIC_APP_NAME="HelloWorldApp"
+
 # Copy the installation script
 COPY install-newrelic.sh /tmp/
 
@@ -46,4 +53,4 @@ COPY --from=publish /app/publish .
 RUN chmod 755 /usr/local/newrelic-dotnet-agent/run.sh
 
 # Run the application and the New Relic agent
-ENTRYPOINT ["dotnet", "HelloWorldApp.dll"]
+ENTRYPOINT ["/usr/local/newrelic-dotnet-agent/run.sh", "dotnet", "HelloWorldApp.dll"]
