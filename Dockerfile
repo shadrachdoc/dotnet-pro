@@ -7,10 +7,10 @@ WORKDIR /app
 RUN apk add --no-cache ca-certificates wget bash
 
 # Download and extract the New Relic agent
-RUN wget -O newrelic-dotnet-agent_10.23.1_amd64.tar.gz https://download.newrelic.com/dot_net_agent/latest_release/newrelic-dotnet-agent_10.23.1_amd64.tar.gz \
+RUN wget -O newrelic-dotnet-agent_10.24.0_amd64.tar.gz https://download.newrelic.com/dot_net_agent/latest_release/newrelic-dotnet-agent_10.24.0_amd64.tar.gz \
     && mkdir -p /usr/local/newrelic-dotnet-agent \
-    && tar -xzf newrelic-dotnet-agent_10.23.1_amd64.tar.gz -C /usr/local/newrelic-dotnet-agent --strip-components=1 \
-    && rm newrelic-dotnet-agent_10.23.1_amd64.tar.gz
+    && tar -xzf newrelic-dotnet-agent_10.24.0_amd64.tar.gz -C /usr/local/newrelic-dotnet-agent --strip-components=1 \
+    && rm newrelic-dotnet-agent_10.24.0_amd64.tar.gz
 
 # Set required environment variables
 ENV CORECLR_ENABLE_PROFILING=1 \
