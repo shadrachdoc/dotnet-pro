@@ -1,30 +1,27 @@
 # Use the official ASP.NET Core runtime image from Microsoft, based on Alpine
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS base
 
-
 # Install required packages and cleanup
 RUN apk add --no-cache ca-certificates wget bash \
     && rm -rf /var/cache/apk/*
 
-RUN mkdir -p /usr/local/newrelic-dotnet-agent
-    
-
 # Create a non-root user and group
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-    
 
 # Set the working directory and ownership
 WORKDIR /app
 RUN chown -R appuser:appgroup /app
+
+# Create the directory for the New Relic agent with root permissions
+RUN mkdir -p /usr/local/newrelic-dotnet-agent \
     && chown -R appuser:appgroup /usr/local/newrelic-dotnet-agent
 
 # Switch to the non-root user
 USER appuser
 
-
 # Download and extract the New Relic agent
 ARG NEWRELIC_AGENT_VERSION=10.24.0
-RUN wget -O newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz https://download.newrelic.com/dot_net_agent/previous_releases/10.24.0/newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz \
+RUN wget -O newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz https://download.newrelic.com/dot_net_agent/previous_releases/${NEWRELIC_AGENT_VERSION}/newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz \
     && tar -xzf newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz -C /usr/local/newrelic-dotnet-agent --strip-components=1 \
     && rm newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz
 
