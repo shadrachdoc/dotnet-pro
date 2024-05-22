@@ -7,13 +7,16 @@ RUN apk add --no-cache ca-certificates wget bash \
     && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/local/newrelic-dotnet-agent
+    
 
 # Create a non-root user and group
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+    
 
 # Set the working directory and ownership
 WORKDIR /app
 RUN chown -R appuser:appgroup /app
+    && chown -R appuser:appgroup /usr/local/newrelic-dotnet-agent
 
 # Switch to the non-root user
 USER appuser
