@@ -1,6 +1,11 @@
 # Use the official ASP.NET Core runtime image from Microsoft, based on Alpine
 FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS base
 
+
+# Install required packages and cleanup
+RUN apk add --no-cache ca-certificates wget bash \
+    && rm -rf /var/cache/apk/*
+
 # Create a non-root user and group
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
@@ -11,8 +16,6 @@ RUN chown -R appuser:appgroup /app
 # Switch to the non-root user
 USER appuser
 
-# Install required packages and cleanup
-RUN apk add --no-cache ca-certificates wget bash
 
 # Download and extract the New Relic agent
 ARG NEWRELIC_AGENT_VERSION=10.24.0
