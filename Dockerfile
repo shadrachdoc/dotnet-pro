@@ -6,6 +6,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS base
 RUN apk add --no-cache ca-certificates wget bash \
     && rm -rf /var/cache/apk/*
 
+RUN mkdir -p /usr/local/newrelic-dotnet-agent
+
 # Create a non-root user and group
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
@@ -20,7 +22,6 @@ USER appuser
 # Download and extract the New Relic agent
 ARG NEWRELIC_AGENT_VERSION=10.24.0
 RUN wget -O newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz https://download.newrelic.com/dot_net_agent/previous_releases/10.24.0/newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz \
-    && mkdir -p /usr/local/newrelic-dotnet-agent \
     && tar -xzf newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz -C /usr/local/newrelic-dotnet-agent --strip-components=1 \
     && rm newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz
 
