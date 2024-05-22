@@ -29,7 +29,7 @@ ENV CORECLR_ENABLE_PROFILING=1 \
     CORECLR_PROFILER_PATH=/usr/local/newrelic-dotnet-agent/libNewRelicProfiler.so
 
 # Use a dummy value for the license key in the build stage
-ENV NEW_RELIC_LICENSE_KEY="dummy"
+ENV NEW_RELIC_LICENSE_KEY="eu01xx897bb460a31b2397bb69e47267FFFFNRAL"
 
 # Use the ASP.NET Core SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
