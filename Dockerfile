@@ -12,8 +12,7 @@ RUN chown -R appuser:appgroup /app
 USER appuser
 
 # Install required packages and cleanup
-RUN apk add --no-cache ca-certificates wget bash \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache ca-certificates wget bash
 
 # Download and extract the New Relic agent
 ARG NEWRELIC_AGENT_VERSION=10.24.0
