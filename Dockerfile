@@ -19,7 +19,7 @@ USER appuser
 
 # Download and extract the New Relic agent
 ARG NEWRELIC_AGENT_VERSION=10.24.0
-RUN wget -O newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz https://download.newrelic.com/dot_net_agent/latest_release/newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz \
+RUN wget -O newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz https://download.newrelic.com/dot_net_agent/previous_releases/10.24.0/newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz \
     && mkdir -p /usr/local/newrelic-dotnet-agent \
     && tar -xzf newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz -C /usr/local/newrelic-dotnet-agent --strip-components=1 \
     && rm newrelic-dotnet-agent_${NEWRELIC_AGENT_VERSION}_amd64.tar.gz
