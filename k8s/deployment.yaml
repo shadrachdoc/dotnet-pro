@@ -16,8 +16,10 @@ spec:
       - name: dotnet-app
         image: shadrach85/dotnet:latest
         ports:
-        - containerPort: 80
+        - containerPort: 5000
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
+        - name: ASPNETCORE_URLS
+          value: "http://*:5000"
 
