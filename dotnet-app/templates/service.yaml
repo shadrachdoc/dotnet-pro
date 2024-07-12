@@ -1,10 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnet-app-service
+  name: {{ .Values.appName }}-service
+  namespace: default
+  labels:
+    app: {{ .values.appName }}
 spec:
   selector:
-    app: dotnet-app
+    app: {{ .values.appName }}
   ports:
     - protocol: TCP
       port: 80

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet-app-deployment
+  name: {{ .Values.appName }}-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: dotnet-app
+      app: {{ .Values.appName }}
   template:
     metadata:
       labels:
-        app: dotnet-app
+        app: {{ .Values.appName }}
     spec:
       containers:
       - name: dotnet-app
