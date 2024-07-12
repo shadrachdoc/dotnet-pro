@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "dotnet-app.fullname" . }}
+  labels:
+    app: {{ include "dotnet-app.name" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
