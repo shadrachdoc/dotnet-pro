@@ -4,10 +4,10 @@ metadata:
   name: {{ .Values.appName }}-service
   namespace: default
   labels:
-    app: {{ .values.appName }}
+    app: {{ .Values.appName }}
 spec:
   selector:
-    app: {{ .values.appName }}
+    app: {{ .Values.appName }}
   ports:
     - protocol: TCP
       port: 80
