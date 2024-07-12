@@ -2,6 +2,8 @@
 
 This is a simple ASP.NET Core web application with New Relic monitoring integrated.
 
+
+
 ## How to Run
 
 To run the application with Docker, please follow these steps:
@@ -22,3 +24,5 @@ You can access the New Relic demo with the following credentials:
 
 - **Email:** t9ilswvbj9@sfolkar.com
 - **Password:** Shad@1234
+
+https://www.youtube.com/watch?v=jUYNS90nq8U&t=47s
