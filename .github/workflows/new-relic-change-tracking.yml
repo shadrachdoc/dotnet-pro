@@ -1,7 +1,5 @@
 name: Change Tracking Marker
-on:
-  release:
-    types: [published]
+on: push
 
 jobs:
   newrelic:
