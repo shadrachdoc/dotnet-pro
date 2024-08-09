@@ -1,4 +1,4 @@
-# HelloWorldApp.
+# HelloWorldApp
 
 This is a simple ASP.NET Core web application with New Relic monitoring integrated.
 
