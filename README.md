@@ -2,7 +2,7 @@
 
 This is a simple ASP.NET Core web application with New Relic monitoring integrated.
 
-## How to Run
+## How to Run.
 
 To run the application with Docker, please follow these steps:
 
